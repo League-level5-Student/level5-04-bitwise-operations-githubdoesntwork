@@ -1,7 +1,7 @@
 package _04_Base64_Decoder;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 
 public class Base64Decoder {
 	/*
@@ -37,19 +37,27 @@ public class Base64Decoder {
 	//1. Complete this method so that it returns the the element in
 	//   the base64Chars array that corresponds to the passed in char.
 	public static byte convertBase64Char(char c){
-		return 0;
+		for(int i = 0; i < base64Chars.length; i++) {
+			if(c==base64Chars[i]) {
+				return (byte) (i+1);
+			}
+		}
+		return -1;
 	}
 	
 	//2. Complete this method so that it will take in a string that is 4 
 	//   characters long and return an array of 3 bytes (24 bits). The byte 
 	//   array should be the binary value of the encoded characters.
 	public static byte[] convert4CharsTo24Bits(String s){
-		return null;
+		return s.getBytes();
 	}
 	
 	//3. Complete this method so that it takes in a string of any length
 	//   and returns the full byte array of the decoded base64 characters.
-	public static byte[] base64StringToByteArray(String file) {
-		return null;
+	public static byte[] base64StringToByteArray(String file) throws UnsupportedEncodingException {
+		byte[] name = Base64.getEncoder().encode(file.getBytes());
+        byte[] decodedString = Base64.getDecoder().decode(new String(name).getBytes("UTF-8"));
+        
+		return decodedString;
 	}
 }

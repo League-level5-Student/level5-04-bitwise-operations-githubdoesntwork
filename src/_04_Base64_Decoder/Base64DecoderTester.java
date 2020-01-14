@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import org.junit.Test;
 
@@ -48,7 +49,7 @@ public class Base64DecoderTester {
 	}
 
 	@Test
-	public void testBase64StringToByteArray() {
+	public void testBase64StringToByteArray() throws UnsupportedEncodingException {
 		String file = "";
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/_04_Base64_Decoder/base64_data.txt"));
